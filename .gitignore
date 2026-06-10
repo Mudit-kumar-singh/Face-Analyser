@@ -1,0 +1,7 @@
+Processed_Data/
+UTKface DATA/
+.venv/
+.ipynb_checkpoints/
+__pycache__/
+*.h5
+*.npy
