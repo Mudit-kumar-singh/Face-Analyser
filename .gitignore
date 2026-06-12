@@ -5,3 +5,4 @@ UTKface DATA/
 __pycache__/
 *.h5
 *.npy
+models/
