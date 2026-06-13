@@ -42,51 +42,47 @@ model = Model(
     outputs=[age_output, gender_output]
 )
 
-# ==========================
 # LOAD WEIGHTS
-# ==========================
 
 try:
     model.load_weights("models/face_weights.weights.h5")
-    print("✅ Model loaded successfully!")
+    print(" Model loaded successfully!")
 except Exception as e:
-    print("❌ Model load error:", e)
+    print(" Model load error:", e)
     exit()
 
-# ==========================
 # LOAD FACE DETECTOR
-# ==========================
 
 face_cascade = cv.CascadeClassifier(
     "haarcascade_frontalface_default.xml"
 )
 
 if face_cascade.empty():
-    print("❌ Error loading Haar Cascade!")
+    print("Error loading Haar Cascade!")
     exit()
 
-# ==========================
+
 # OPEN WEBCAM
-# ==========================
+
 
 cap = cv.VideoCapture(0, cv.CAP_DSHOW)
 
 if not cap.isOpened():
-    print("❌ Could not open webcam!")
+    print("Could not open webcam!")
     exit()
 
-print("🎥 Webcam started. Press Q to quit.")
+print("Webcam started. Press Q to quit.")
 
-# ==========================
+
 # MAIN LOOP
-# ==========================
+
 
 while True:
 
     ret, frame = cap.read()
 
     if not ret:
-        print("❌ Could not read frame")
+        print("Could not read frame")
         break
 
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
@@ -172,9 +168,6 @@ while True:
     if cv.waitKey(1) & 0xFF == ord("q"):
         break
 
-# ==========================
-# CLEANUP
-# ==========================
 
 cap.release()
 cv.destroyAllWindows()
