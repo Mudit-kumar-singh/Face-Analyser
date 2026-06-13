@@ -13,9 +13,7 @@ from tensorflow.keras.layers import (
     Dropout
 )
 
-# ==========================
 # MODEL ARCHITECTURE
-# ==========================
 
 input_layer = Input(shape=(128, 128, 3))
 
