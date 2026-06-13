@@ -8,7 +8,7 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 from sklearn.model_selection import train_test_split
 
-# ── Data Load ──
+# Data Load
 print("Loading data...")
 X             = np.load("Processed_Data/X.npy")
 age_labels    = np.load("Processed_Data/age_labels.npy")
@@ -17,7 +17,7 @@ print(f"X shape      : {X.shape}")
 print(f"Age labels   : {age_labels.shape}")
 print(f"Gender labels: {gender_labels.shape}")
 
-# ── Model Architecture ──
+# Model Architecture
 input_layer = Input(shape=(128, 128, 3))
 
 x = Conv2D(32, (3,3), activation='relu', padding='same')(input_layer)
@@ -55,7 +55,7 @@ model.compile(
 
 model.summary()
 
-# ── Train/Val Split ──
+# Train/Val Split
 X_train, X_val, age_train, age_val, gender_train, gender_val = train_test_split(
     X, age_labels, gender_labels, test_size=0.2, random_state=42
 )
@@ -63,7 +63,7 @@ X_train, X_val, age_train, age_val, gender_train, gender_val = train_test_split(
 del X
 gc.collect()
 
-# ── Callbacks ──
+# Callbacks
 os.makedirs("models", exist_ok=True)
 
 checkpoint = ModelCheckpoint(
@@ -82,7 +82,7 @@ early_stop = EarlyStopping(
 import tensorflow as tf
 print(tf.config.list_physical_devices('GPU'))
 print("Num GPUs:", len(tf.config.list_physical_devices('GPU')))
-# ── Train ──
+# Train
 model.fit(
     X_train,
     {'age': age_train, 'gender': gender_train},
@@ -92,4 +92,4 @@ model.fit(
     callbacks=[checkpoint, early_stop]
 )
 
-print("✅ Model saved!")
+print("Model saved!")

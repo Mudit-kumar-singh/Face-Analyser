@@ -50,7 +50,7 @@ Face-Analyser/
 
 ## Current Status
 
-🚧 Active Development
+Active Development
 
 Current capabilities:
 

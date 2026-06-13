@@ -64,7 +64,6 @@ if face_cascade.empty():
 
 # OPEN WEBCAM
 
-
 cap = cv.VideoCapture(0, cv.CAP_DSHOW)
 
 if not cap.isOpened():
