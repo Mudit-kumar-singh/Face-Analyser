@@ -39,11 +39,10 @@ Face-Analyser/
 ├── webcam_access.py
 ├── preprocess.py
 ├── train_data.py
-├── compress_data.py
 ├── haarcascade_frontalface_default.xml
 │
 ├── models/
-│   └── face_weights.weights.h5
+│   └── face_model.keras
 │
 └── README.md
 ```
