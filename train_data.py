@@ -8,7 +8,7 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 from sklearn.model_selection import train_test_split
 
-# Data Load
+# Data Loading
 print("Loading data...")
 X             = np.load("Processed_Data/X.npy")
 age_labels    = np.load("Processed_Data/age_labels.npy")
