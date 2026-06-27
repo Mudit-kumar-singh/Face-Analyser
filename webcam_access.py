@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 import tensorflow as tf
+from fer import FER
 
 try:
     model = tf.keras.models.load_model(
@@ -11,6 +12,8 @@ try:
 except Exception as e:
     print("Model load error:", e)
     exit()
+
+emotion_detector = FER(mtcnn=False)
 
 face_cascade = cv.CascadeClassifier(
     "haarcascade_frontalface_default.xml"
@@ -103,6 +106,34 @@ while True:
                 (255, 0, 0),
                 2
             )
+            try:
+
+                result = emotion_detector.detect_emotions(face_rgb)
+
+                if len(result) > 0:
+
+                    emotions = result[0]["emotions"]
+
+                    emotion = max(
+                        emotions,
+                        key=emotions.get
+                    )
+
+                    confidence = emotions[emotion]
+
+                    cv.putText(
+                        frame,
+                        f"{emotion} ({confidence:.2f})",
+                        (x, y-60),
+                        cv.FONT_HERSHEY_SIMPLEX,
+                        0.7,
+                        (0,255,255),
+                        2
+                    )
+
+            except Exception as e:
+                print(e)
+            
 
             cv.putText(
                 frame,
