@@ -124,10 +124,10 @@ while True:
                     cv.putText(
                         frame,
                         f"{emotion} ({confidence:.2f})",
-                        (x, y-60),
+                        (x, y + h + 20),
                         cv.FONT_HERSHEY_SIMPLEX,
                         0.7,
-                        (0,255,255),
+                        (0,255,0),
                         2
                     )
 
